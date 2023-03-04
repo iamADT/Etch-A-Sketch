@@ -1,4 +1,7 @@
-const container = document.getElementById("container");
+//Declaration of DOMs
+const container = document.getElementById('container');
+let divTemplate = document.createElement('div');
+let gridButton = document.getElementById('gridButton')
 
 //Determine Viewport size
 let viewportWidth = window.innerWidth;
@@ -24,4 +27,9 @@ for (let i = 0; i < squareCount; i++){
     divTemplate.style.margin = '0.5px';
     divTemplate.style.borderStyle = 'solid';
     container.appendChild(divTemplate);
+    
+    //grid changes colour when you mouse over it
+    divTemplate.addEventListener("mouseover", () => {
+        divTemplate.style.backgroundColor = 'red'
+    })
 }

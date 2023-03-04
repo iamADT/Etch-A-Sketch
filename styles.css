@@ -1,0 +1,13 @@
+.buttonContainer{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+#gridButton{
+    background-color: khaki;
+    border: solid 1px #555555;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 20px;
+}
