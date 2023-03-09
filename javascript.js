@@ -43,12 +43,17 @@ function initialGrid (squareCount) {
 window.onload = initialGrid();
 
 function userInput () {
-    numberOfSquares = prompt("number of squares per side? (max number = 100)");
+    numberOfSquares = prompt("number of squares per side? (max number = 100)", 20);
     console.log(numberOfSquares);
-    if (numberOfSquares > 100){
-        while (numberOfSquares > 100){
-            numberOfSquares = prompt("please enter another number");
+    if (numberOfSquares > 100 || numberOfSquares < 1){
+        if (numberOfSquares === null){
+            return alert("You cancelled the action")
         }
+        else {
+        while (numberOfSquares > 100 || numberOfSquares < 1){
+            numberOfSquares = prompt("please enter another number", 20);
+        }
+    }
     }
     return numberOfSquares;  
 }
