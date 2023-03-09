@@ -1,7 +1,7 @@
 .buttonContainer{
     display: flex;
     justify-content: flex-end;
-    padding: 20px;
+    padding: 20px 4px;
 }
 
 #gridButton{
@@ -10,4 +10,5 @@
     border-radius: 5px;
     padding: 20px;
     font-size: 20px;
+    cursor: pointer;
 }
