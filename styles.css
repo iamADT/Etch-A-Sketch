@@ -4,14 +4,22 @@
     font-family: 'Space Grotesk', sans-serif;
 }
 
+body {
+    background-color: #d9d9d9;
+    padding-bottom: 60px;
+}
+
 header{
     padding: 40px 0px 20px;
     margin: auto;
     text-align: center;
 }
 
-h3{
-    padding-bottom: 0px;
+#gridSection{
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 p {
@@ -22,15 +30,24 @@ p {
 
 .buttonContainer{
     display: flex;
-    justify-content: center;
-    padding: 20px 4px 40px;
+    align-items: center;
 }
 
-#gridButton{
+.gridButton{
     background-color: khaki;
     border: solid 1px #555555;
     border-radius: 5px;
     padding: 20px;
     font-size: 20px;
     cursor: pointer;
+    margin: 30px;
+}
+
+#container{
+    width: 400px;
+    height: 400px;
+    box-shadow: 2px 2px 10px #aaaaaa;
+    border: solid 1px #bbbbbb;
+    background-color: #e8e8e8;
+    margin-bottom: 20px;
 }

@@ -12,16 +12,23 @@
     <body>
         <header>
             <h1>Etch-A-Sketch</h1>
-            <h3>Welcome to Etch-A-Sketch</h3>
             <p>To begin, place your cursor on any of the squares and start drawing. 
                 <br>
-                To refresh or change grid size, select "Change Grid Size" and input a number between 1 and 100. e.g. 20</p>
+                To refresh or change grid size, select a different grid size at the bottom</p>
         </header>
-        <section>
-            <div class="buttonContainer">
-                <button id="gridButton">Change Grid Size</button>
-            </div>
+        <section id="gridSection">
             <div id="container"></div>
+            <h3>Change Grid Size</h3>
+            <div class="buttonContainer">
+                <button class="gridButton" id="ten">10 x 10</button>
+                <button class="gridButton" id="twentyFour">24 x 24</button>
+                <button class="gridButton" id="fortyEight">48 x 48</button>
+                <button class="gridButton" id="custom">Custom</button>
+            </div>
+            <h3>Change Colour</h3>
+            <div class="colourContainer">
+                <button class="gridButton" id="monochrome">Monochrome</button>
+                <button class="gridButton" id="rouge">Rouge</button>
         </section>
     </body>
 </html>

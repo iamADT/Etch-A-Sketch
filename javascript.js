@@ -1,46 +1,54 @@
 //Declaration of DOMs
 const container = document.getElementById('container');
-let divTemplate = document.createElement('div');
-let gridButton = document.getElementById('gridButton');
-let numberOfSquares;
+let gridButton = document.getElementsByClassName('gridButton');
+let ten = document.getElementById('ten');
+let twentyFour = document.getElementById('twentyFour');
+let fortyEight = document.getElementById('fortyEight');
+let custom = document.getElementById('custom');
 
-
-//Determine Viewport size
-let viewportWidth = window.innerWidth;
-let viewportHeight = window.innerHeight;
-let squareSize = 16;
-let squareHorizontal = Math.floor(viewportWidth / squareSize);
-let squareVertical = Math.floor(viewportHeight / squareSize);
-let squareCount;
-
-//Create Container box
-container.style.display = 'flex';
-container.style.flexWrap = 'wrap';
-container.style.width = viewportWidth + 'px';
-container.style.height = viewportHeight + 'px';
-container.style.overflow = 'hidden';
-container.style.margin = 'auto';
-
-// Create a pattern of squares that fits the window
-function initialGrid (squareCount) {
-    squareCount = squareHorizontal* squareVertical;
-    for (let i = 0; i < squareCount; i++){
+// Function to create a grid
+function createGrid (numberOfSquares) {
+    let squareCountArea = Math.pow(numberOfSquares, 2);
+    for (let i = 1; i <= squareCountArea; i++){
         let divTemplate = document.createElement('div');
-        divTemplate.style.borderColor = 'red';
-        divTemplate.style.width = '16px';
-        divTemplate.style.height = '16px';
-        divTemplate.style.margin = '0.5px';
-        divTemplate.style.borderStyle = 'solid';
+        container.style.display = 'grid';
+        container.style.gridTemplateColumns = `repeat(${numberOfSquares}, 1fr)`;
+        container.gridTemplateRows = `repeat(${numberOfSquares}, 1fr)`;
+        divTemplate.style.border = '0.1px solid #CE8282';
         container.appendChild(divTemplate);
-        
-        //grid changes colour when you mouse over it
-        divTemplate.addEventListener("mouseover", () => {
-            divTemplate.style.backgroundColor = 'red'
+        divTemplate.addEventListener("mousemove", ()=>{
+            divTemplate.style.backgroundColor = '#FFA8A8';
         })
     }
 }
 
-window.onload = initialGrid();
+window.onload = createGrid(8);
+
+//Change Grid Size functions
+ten.addEventListener("click", ()=> {
+    let allCells = container.querySelectorAll('div');
+    allCells.forEach(allCells => allCells.remove());
+    createGrid(10);
+})
+
+twentyFour.addEventListener("click", ()=> {
+    let allCells = container.querySelectorAll('div');
+    allCells.forEach(allCells => allCells.remove());
+    createGrid(24);
+})
+
+fortyEight.addEventListener("click", ()=> {
+    let allCells = container.querySelectorAll('div');
+    allCells.forEach(allCells => allCells.remove());
+    createGrid(48);
+})
+
+custom.addEventListener("click", ()=> {
+    let allCells = container.querySelectorAll('div');
+    allCells.forEach(allCells => allCells.remove());
+    createGrid(userInput());
+})
+
 
 function userInput () {
     numberOfSquares = prompt("number of squares per side? (max number = 100)", 20);
@@ -58,33 +66,5 @@ function userInput () {
     return numberOfSquares;  
 }
 
-function removeGrid () {
-    while (container.lastElementChild){
-        container.removeChild(container.lastChild);
-    }
-    // container.replaceChildren();
-}
 
-
-
-gridButton.addEventListener("click", () => {
-    userInput();
-    removeGrid();
-    
-    //Create new grid;
-    squareHorizontal = Math.floor(numberOfSquares);
-    squareVertical = Math.floor(numberOfSquares);
-    squareCount = squareHorizontal* squareVertical;
-    if (numberOfSquares < 20){
-        container.style.minWidth = 'auto';
-        container.style.maxWidth = '256px';
-    }
-    else {
-        container.style.minWidth = 'auto';
-        container.style.maxWidth = squareCount + 'px';
-    }
-    container.style.height = 'auto'
-    container.style.margin = 'auto';
-    initialGrid(squareCount);
-
-})
+//change colour functions
