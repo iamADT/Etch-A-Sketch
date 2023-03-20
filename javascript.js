@@ -5,8 +5,20 @@ let ten = document.getElementById('ten');
 let twentyFour = document.getElementById('twentyFour');
 let fortyEight = document.getElementById('fortyEight');
 let custom = document.getElementById('custom');
+let monochromeButton = document.getElementById('monochrome');
+let rougeButton = document.getElementById('rouge');
+let backgroundColor;
+let borderColor;
+let monochromeBg = '#B9B9B9';
+let monochromeBorder ='#AAAAAA'; 
+let rougeBg = '#FFA8A8';
+let rougeBorder ='#CE8282';
+
+
 
 // Function to create a grid
+backgroundColor = rougeBg;
+borderColor = rougeBorder;
 function createGrid (numberOfSquares) {
     let squareCountArea = Math.pow(numberOfSquares, 2);
     for (let i = 1; i <= squareCountArea; i++){
@@ -14,10 +26,10 @@ function createGrid (numberOfSquares) {
         container.style.display = 'grid';
         container.style.gridTemplateColumns = `repeat(${numberOfSquares}, 1fr)`;
         container.gridTemplateRows = `repeat(${numberOfSquares}, 1fr)`;
-        divTemplate.style.border = '0.1px solid #CE8282';
+        divTemplate.style.border = `0.1px solid ${borderColor}`;
         container.appendChild(divTemplate);
         divTemplate.addEventListener("mousemove", ()=>{
-            divTemplate.style.backgroundColor = '#FFA8A8';
+            divTemplate.style.backgroundColor = `${backgroundColor}`;
         })
     }
 }
@@ -68,3 +80,20 @@ function userInput () {
 
 
 //change colour functions
+monochromeButton.addEventListener("click", ()=> {
+    backgroundColor = monochromeBg;
+    borderColor = monochromeBorder;
+    let allCells = container.querySelectorAll('div');
+    allCells.forEach(allCells => allCells.remove());
+    numberOfSquares = 8;
+    createGrid(numberOfSquares);
+})
+
+rougeButton.addEventListener("click", ()=> {
+    backgroundColor = rougeBg;
+    borderColor = rougeBorder;
+    let allCells = container.querySelectorAll('div');
+    allCells.forEach(allCells => allCells.remove());
+    numberOfSquares = 8;
+    createGrid(numberOfSquares);
+})
